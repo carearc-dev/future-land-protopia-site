@@ -72,7 +72,7 @@ EOT;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Future Land Project</title>
+  <title>Future Land Protopia</title>
   <link rel="stylesheet" href="css/style.css">
 
   <!-- font -->
@@ -98,7 +98,8 @@ EOT;
         <li><img src="img/icon01.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#concept">Concept</a></li>
         <li><li><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#characters">Friends</a></li>
         <li><li><img src="img/icon01.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
-        <li><li><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#goods">Item</a></li>
+        <!-- ▼ECグッズ：一時非表示（再開時は style="display:none" を外す） -->
+        <li style="display: none;"><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#goods">Item</a></li>
         <li><li><img src="img/icon01.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#news">News</a></li>
         <li><li><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#contact">Contact</a></li>
       </ul>
@@ -119,7 +120,8 @@ EOT;
       <li><img src="img/icon01.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#concept">Concept</a></li>
       <li><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#characters">Friends</a></li>
       <li><img src="img/icon01.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
-      <li><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#goods">Item</a></li>
+      <!-- ▼ECグッズ：一時非表示（再開時は style="display:none" を外す） -->
+      <li style="display: none;"><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#goods">Item</a></li>
       <li><img src="img/icon01.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#news">News</a></li>
       <li><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#contact">Contact</a></li>
     </ul>
@@ -140,7 +142,7 @@ EOT;
 
   <!-- ================= Concept ================= -->
   <section class="concept" id="concept">
-    <h2 class="section-title js-fadeup"><span class="line">FUTURE LAND PROJECTって？</span></h2>
+    <h2 class="section-title js-fadeup"><span class="line">FUTURE LAND PROTOPIAって？</span></h2>
 
     <div class="concept-visual">
       <img src="img/concept-img.png" alt="" class="concept-img">
@@ -377,7 +379,8 @@ EOT;
   </section>
 
   <!-- ================= Goods ================= -->
-  <section class="goods" id="goods" style="background-color: #fffdee;">
+  <!-- ▼ECグッズショップ：一時非表示（再開時は style の display:none を外す） -->
+  <section class="goods" id="goods" style="background-color: #fffdee; display: none;">
   <div class="inner">
     <div class="Title-Box">
       <h2 class="section-title1 js-fadeup">Goods</h2>
@@ -653,7 +656,7 @@ EOT;
     -->
   </ul>
 
-    <p style="font-size: 10px;">© Future Land Project</p>
+    <p style="font-size: 10px;">© Future Land Protopia</p>
   </footer>
 
 
