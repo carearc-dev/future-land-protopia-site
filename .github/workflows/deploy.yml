@@ -1,0 +1,58 @@
+name: Deploy to Sakura
+
+# main にマージされたら さくら（futurelandprotopia.jp）へ自動でFTPSデプロイします。
+# 必要な Secrets（登録済み）:
+#   FTP_SERVER / FTP_USERNAME / FTP_PASSWORD / FTP_SERVER_DIR
+#   CONTACT_TO / CONTACT_FROM / CONTACT_FROM_NAME（問い合わせフォーム設定・下のステップ参照）
+#
+# ⚠️ 前提: このリポジトリに「サイト本体のファイル」がpushされていること。
+#          現在はREADMEのみ。ローカルのサイトをPRでpushしてください。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-sakura
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # --- 任意: 問い合わせフォーム設定を Secrets から生成 ---
+      # フォームPHPが config.php をどう読むか確定したら、実態に合わせて有効化してください。
+      # 有効化すると「公開リポにメアドを残さず」フォーム設定を反映できます。
+      # - name: Generate config.php from secrets
+      #   run: |
+      #     cat > config.php <<PHP
+      #     <?php
+      #     define('CONTACT_TO', '${{ secrets.CONTACT_TO }}');
+      #     define('CONTACT_FROM', '${{ secrets.CONTACT_FROM }}');
+      #     define('CONTACT_FROM_NAME', '${{ secrets.CONTACT_FROM_NAME }}');
+      #     PHP
+
+      - name: Deploy via FTPS to Sakura
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          protocol: ftps
+          # サイト以外＋サーバー専用ファイルは転送・削除しない（既存フォーム設定を温存）
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/README.md
+            **/*.md
+            **/config.php
+            **/.ftp-deploy-sync-state.json
