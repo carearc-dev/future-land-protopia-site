@@ -1,20 +1,22 @@
 name: Deploy to Sakura
 
-# main にマージされたら さくら（futurelandprotopia.jp）へ自動でFTPSデプロイします。
-# 必要な Secrets（登録済み）:
-#   FTP_SERVER / FTP_USERNAME / FTP_PASSWORD / FTP_SERVER_DIR
-#   CONTACT_TO / CONTACT_FROM / CONTACT_FROM_NAME（問い合わせフォーム設定・下のステップ参照）
+# main にマージ／push されたら、さくらサーバーへ SFTP（SSH鍵）で自動デプロイします。
+# 公開フォルダ: ~/www/futurelandprotopia.jp/
 #
-# ⚠️ 前提: このリポジトリに「サイト本体のファイル」がpushされていること。
-#          現在はREADMEのみ。ローカルのサイトをPRでpushしてください。
+# 必要な Secrets:
+#   FTP_SERVER       … さくらのサーバ名（例: xxxx.sakura.ne.jp）
+#   FTP_USERNAME     … SSH/FTP のアカウント名
+#   SSH_PRIVATE_KEY  … デプロイ用SSH秘密鍵（公開鍵はサーバーの ~/.ssh/authorized_keys に登録済み）
+#
+# 安全設計:
+#   - config.php（問い合わせ設定・サーバー側）は除外＝温存
+#   - --delete は使わない＝リポジトリに無いサーバー側ファイルは消さない
+#   ※ FTPSはさくらのデータ接続と相性が悪く不可だったため、単一接続のSFTPに切替済み
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
-permissions:
-  contents: read
 
 concurrency:
   group: deploy-sakura
@@ -27,32 +29,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # --- 任意: 問い合わせフォーム設定を Secrets から生成 ---
-      # フォームPHPが config.php をどう読むか確定したら、実態に合わせて有効化してください。
-      # 有効化すると「公開リポにメアドを残さず」フォーム設定を反映できます。
-      # - name: Generate config.php from secrets
-      #   run: |
-      #     cat > config.php <<PHP
-      #     <?php
-      #     define('CONTACT_TO', '${{ secrets.CONTACT_TO }}');
-      #     define('CONTACT_FROM', '${{ secrets.CONTACT_FROM }}');
-      #     define('CONTACT_FROM_NAME', '${{ secrets.CONTACT_FROM_NAME }}');
-      #     PHP
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
-      - name: Deploy via FTPS to Sakura
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          protocol: ftps
-          # サイト以外＋サーバー専用ファイルは転送・削除しない（既存フォーム設定を温存）
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            **/README.md
-            **/*.md
-            **/config.php
-            **/.ftp-deploy-sync-state.json
+      - name: SSH鍵とknown_hostsを準備
+        env:
+          KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          S: ${{ secrets.FTP_SERVER }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -p 22 -T 15 "$S" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Deploy via SFTP (lftp mirror)
+        env:
+          S: ${{ secrets.FTP_SERVER }}
+          U: ${{ secrets.FTP_USERNAME }}
+        run: |
+          lftp -u "$U", "sftp://$S" -e "
+            set sftp:connect-program 'ssh -a -x -i $HOME/.ssh/id_deploy -o IdentitiesOnly=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts';
+            mirror -R --verbose \
+              --exclude-glob '.git*' \
+              --exclude-glob '*.md' \
+              --exclude-glob 'config.php' \
+              --exclude-glob '.ftp-deploy-sync-state.json' \
+              ./ www/futurelandprotopia.jp/;
+            bye"
