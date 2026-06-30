@@ -646,7 +646,7 @@ EOT;
   <!-- SNS -->
   <ul class="footer-sns">
     <!-- <li><a href="#"><img src="img/x.png" alt="X"></a></li> -->
-    <li><a href="#"><img src="img/Instagram.png" alt="Instagram"></a></li>
+    <li><a href="https://www.instagram.com/future_land_protopia" target="_blank" rel="noopener"><img src="img/Instagram.png" alt="Instagram"></a></li>
     <!-- <li><a href="#"><img src="img/YouTube.png" alt="YouTube"></a></li> -->
     <!--  
     <li><a href="#"><img src="img/icon-threads.svg" alt="Threads"></a></li>
