@@ -420,9 +420,16 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  /*  
+  overflow: hidden;
+  /*
   padding-top: 80px;
   */
+}
+
+/* ファーストビュー動画は常に画面幅いっぱいに（左右の黒帯防止） */
+.fv-movie {
+  width: 100%;
+  height: auto;
 }
 
 

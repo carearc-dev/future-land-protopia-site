@@ -142,24 +142,23 @@ EOT;
 
   <!-- ================= Concept ================= -->
   <section class="concept" id="concept">
-    <h2 class="section-title js-fadeup"><span class="line">FUTURE LAND PROTOPIAって？</span></h2>
+    <h2 class="section-title js-fadeup"><span class="line">FUTURE LAND PROTOPIA</span></h2>
 
     <div class="concept-visual">
       <img src="img/concept-img.png" alt="" class="concept-img">
     </div>
 
-    <p class="PC concept-text js-fadeup">
-      ここでは、私たちのブランドやキャラクターについてご紹介します。世界観や想いがしっかり伝わるように、<br>
-      ちょっとだけ熱く語らせてください！このセクションでは、単なる説明ではなく、<br>
-      「なんか好きかも」「気になるかも」と感じてもらえるように、感情に届く表現を意識しています。<br>
-      読みながら、少しでもワクワクしてもらえたら嬉しいです。
-    </p>
-
-    <p class="SP concept-text js-fadeup">
-      ここでは、私たちのブランドやキャラクター<br>についてご紹介します。世界観や想いがしっかり<br>伝わるように、
-      ちょっとだけ熱く語らせてください！このセクションでは、単なる説明ではなく、<br>
-      「なんか好きかも」「気になるかも」と<br>感じてもらえるように、感情に届く表現を<br>意識しています。
-      読みながら、少しでも<br>ワクワクしてもらえたら嬉しいです。
+    <p class="concept-text js-fadeup">
+      “地球にやさしい”<br>
+      “人にやさしい”<br>
+      人間も動物も共存する美しい地球。<br>
+      たったひとつしかない青く輝く地球。<br>
+      <br>
+      地球の良い未来につなげていくために、<br>
+      私たちひとりひとりが身近な視点から<br>
+      見つめ直し行動することがとても大切だね。<br>
+      <br>
+      フラッティと良き仲間より
     </p>
   </section>
 
@@ -169,6 +168,18 @@ EOT;
       <h2 class="section-title1 js-fadeup">FRIENDS</h2>
         <p class="subtitle js-fadeup"><span class="pick" style="color: var(--accent-2);">な</span>かまたち</p>
     </div>
+
+    <p class="PC concept-text js-fadeup" style="margin-bottom: 50px;">
+      プロトピアの森に暮らす3人のおともだち。それぞれが「ありがとう」の気持ちを大切にしながら、<br>
+      毎日ちいさな幸せを見つけています。お花のようにカラフルでやさしい心をもった彼らが、<br>
+      あなたの毎日にそっと彩りを届けてくれるかもしれません。
+    </p>
+
+    <p class="SP concept-text js-fadeup" style="margin-bottom: 50px;">
+      プロトピアの森に暮らす3人のおともだち。<br>それぞれが「ありがとう」の気持ちを<br>大切にしながら、
+      毎日ちいさな幸せを<br>見つけています。お花のようにカラフルで<br>やさしい心をもった彼らが、
+      あなたの毎日に<br>そっと彩りを届けてくれるかもしれません。
+    </p>
 
     <div class="character-list">
       <article class="character-card">
@@ -201,19 +212,6 @@ EOT;
           よく見ていて、あたたかい気持ちを<br>
           届けてくれる。</p>
       </article>
-
-    <p class="PC concept-text">
-      プロトピアの森に暮らす3人のおともだち。それぞれが「ありがとう」の気持ちを大切にしながら、<br>
-      毎日ちいさな幸せを見つけています。お花のようにカラフルでやさしい心をもった彼らが、<br>
-      あなたの毎日にそっと彩りを届けてくれるかもしれません。
-    </p>
-
-    <p class="SP concept-text">
-      プロトピアの森に暮らす3人のおともだち。<br>それぞれが「ありがとう」の気持ちを<br>大切にしながら、
-      毎日ちいさな幸せを<br>見つけています。お花のようにカラフルで<br>やさしい心をもった彼らが、
-      あなたの毎日に<br>そっと彩りを届けてくれるかもしれません。
-    </p>
-
     </div>
   </section>
 
