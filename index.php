@@ -2,6 +2,11 @@
 // ================= 初期設定 =================
 $errors = [];
 $success = false;
+$mailConfigPath = __DIR__ . "/config.php";
+$mailConfig = is_file($mailConfigPath) ? require $mailConfigPath : [];
+$contactTo = $mailConfig["contact_to"] ?? "mail@daikanyama-hb.com,m.kamei@daikanyama-hb.com";
+$contactFrom = $mailConfig["contact_from"] ?? "mail@daikanyama-hb.com";
+$contactFromName = $mailConfig["contact_from_name"] ?? "Future Land Project";
 
 // ================= 送信処理 =================
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -22,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $message = htmlspecialchars($_POST["message"], ENT_QUOTES, "UTF-8");
     $type    = htmlspecialchars($_POST["type"] ?? "未選択", ENT_QUOTES, "UTF-8");
 
-    $to = "n.nishimaki@carearc.co.jp"; // ★自分のメールに変更 ★複数アドレス設定可能 ★,で区切る
+    $to = $contactTo;
     $subject = "【お問い合わせ】ホームページよりお問い合わせがありました。";
     $body = <<<EOT
 【お問い合わせ種別】
@@ -47,7 +52,13 @@ EOT;
     mb_language("Japanese");
     mb_internal_encoding("UTF-8");
 
-    if (mb_send_mail($to, $subject, $body, "From: {$email}")) {
+    $encodedFromName = mb_encode_mimeheader($contactFromName, "UTF-8");
+    $headers = [
+      "From: {$encodedFromName} <{$contactFrom}>",
+      "Reply-To: {$email}",
+    ];
+
+    if (mb_send_mail($to, $subject, $body, implode("\r\n", $headers))) {
       $success = true;
     } else {
       $errors[] = "送信に失敗しました。時間をおいて再度お試しください。";
@@ -72,7 +83,7 @@ EOT;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Future Land Project</title>
+  <title>Future Land Protopia</title>
   <link rel="stylesheet" href="css/style.css">
 
   <!-- font -->
@@ -98,7 +109,8 @@ EOT;
         <li><img src="img/icon01.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#concept">Concept</a></li>
         <li><li><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#characters">Friends</a></li>
         <li><li><img src="img/icon01.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
-        <li><li><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#goods">Item</a></li>
+        <!-- ▼ECグッズ：一時非表示（再開時は style="display:none" を外す） -->
+        <li style="display: none;"><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#goods">Item</a></li>
         <li><li><img src="img/icon01.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#news">News</a></li>
         <li><li><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#contact">Contact</a></li>
       </ul>
@@ -119,7 +131,8 @@ EOT;
       <li><img src="img/icon01.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#concept">Concept</a></li>
       <li><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#characters">Friends</a></li>
       <li><img src="img/icon01.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
-      <li><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#goods">Item</a></li>
+      <!-- ▼ECグッズ：一時非表示（再開時は style="display:none" を外す） -->
+      <li style="display: none;"><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#goods">Item</a></li>
       <li><img src="img/icon01.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#news">News</a></li>
       <li><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#contact">Contact</a></li>
     </ul>
@@ -140,7 +153,7 @@ EOT;
 
   <!-- ================= Concept ================= -->
   <section class="concept" id="concept">
-    <h2 class="section-title js-fadeup"><span class="line">FUTURE LAND PROJECTって？</span></h2>
+    <h2 class="section-title js-fadeup"><span class="line">FUTURE LAND PROTOPIAって？</span></h2>
 
     <div class="concept-visual">
       <img src="img/concept-img.png" alt="" class="concept-img">
@@ -169,24 +182,23 @@ EOT;
     </div>
 
     <div class="character-list">
-      <article class="character-card">
-        <div class="character-image">
-          <img src="img/character01.png" alt="エリオット" class="item js-fadeup-1">
-        </div>
-        <p class="character-name">Elliot（エリオット）</p>
-        <p class="character-copy">やさしくて頼れるくまの子。みん<br>
-          なのことをいつも気にかけてくれる、<br>
-          優しい存在。</p>
-      </article>
 
       <article class="character-card">
         <div class="character-image">
           <img src="img/character02.png" alt="フラっティ" class="item js-fadeup-1">
         </div>
         <p class="character-name">Flatty（フラッティ）</p>
-        <p class="character-copy">元気いっぱいでおしゃべり好きなうさ<br>
-          ぎの子。どんなときも明るく、<br>
-          楽しい空気を作ってくれるよ♪</p>
+        <p class="character-copy">フラッティはせっかちなところが<br>
+          あるけど正義感の強い子</p>
+      </article>
+
+      <article class="character-card">
+        <div class="character-image">
+          <img src="img/character01.png" alt="エリオット" class="item js-fadeup-1">
+        </div>
+        <p class="character-name">Elliot（エリオット）</p>
+        <p class="character-copy">エリオットは普段はおっとり<br>
+          穏やかな男の子</p>
       </article>
 
       <article class="character-card">
@@ -194,10 +206,11 @@ EOT;
           <img src="img/character03.png" alt="キャメロン" class="item js-fadeup-1">
         </div>
         <p class="character-name">Cameron（キャメロン）</p>
-        <p class="character-copy">おっとりマイペースなかめの子。 <br>
-          ゆっくりだけど、いつもみんなを<br>
-          よく見ていて、あたたかい気持ちを<br>
-          届けてくれる。</p>
+        <p class="character-copy character-copy-cameron">
+          <span class="cam-line cam-line-1">キャメロンはちょっとおてんばですが、</span><br>
+          <span class="cam-line cam-line-2">ファッション楽しいことを</span><br>
+          <span class="cam-line cam-line-3">するのが好きな女の子</span>
+        </p>
       </article>
 
     <p class="PC concept-text">
@@ -315,42 +328,98 @@ EOT;
     <div class="slider-row row-top">
       <div class="slider-track">
         <!-- 7個 × 2（ループ用に複製） -->
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
 
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
       </div>
     </div>
 
     <!-- 下段 -->
     <div class="slider-row row-bottom">
       <div class="slider-track reverse">
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
 
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
-        <div class="box" style="background-color: var(--accent-1);"></div>
-        <div class="box" style="background-color: var(--color-sub);"></div>
+        <div class="box" style="background-color: var(--color-sub);">
+        <p style="font-size: 25px; color: var(--color-font);line-height: 225px; ">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--accent-1);">
+          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
+        </div>
+        <div class="box" style="background-color: var(--color-sub);">
+          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
+        </div>
       </div>
     </div>
   </div>
@@ -374,10 +443,11 @@ EOT;
     </div>
   </a>
 </div>
-  </section>
+</section>
 
-  <!-- ================= Goods ================= -->
-  <section class="goods" id="goods" style="background-color: #fffdee;">
+  <!-- ================= Goods ================= 
+  ▼ECグッズショップ：一時非表示（再開時は style の display:none を外す）
+  <section class="goods" id="goods" style="background-color: #fffdee; display: none;">
   <div class="inner">
     <div class="Title-Box">
       <h2 class="section-title1 js-fadeup">Goods</h2>
@@ -400,7 +470,7 @@ EOT;
         </p>
       </article>
 
-      <!-- 同じ構造を繰り返す -->
+       同じ構造を繰り返す 
       <article class="goodsItem">
         <div class="goodsImg"></div>
         <button class="buyBtn">BUY</button>
@@ -463,7 +533,7 @@ EOT;
 
   </div>
 </section>
-
+-->
 
   <!-- ================= Nwes ================= -->
 <section class="news" id="news" style="background-color:var(--color-main)">
@@ -555,6 +625,34 @@ EOT;
 
 
 
+  <!-- ================= Message ================= -->
+  <section class="message" id="message">
+    <div class="message-inner js-fadeup">
+      <p class="message-label">Our Message</p>
+
+      <h2 class="message-title">
+        <span>"<span class="message-title-accent">地球</span>にやさしい"</span>
+        <span>"<span class="message-title-accent">人</span>にやさしい"</span>
+      </h2>
+
+      <p class="message-lead">
+        人間も動物も共存する美しい地球。<br>
+        たったひとつしかない青く輝く地球。
+      </p>
+
+      <p class="message-text">
+        地球の良い未来につなげていくために、<br class="PC">
+        <br class="SP">
+        私たちひとりひとりが<br class="SP">身近な視点から<br>
+        見つめ直し行動することがとても大切だね。
+      </p>
+
+      <p class="message-from">フラッティと良き仲間より</p>
+    </div>
+  </section>
+
+
+
   <!-- ================= Contact ================= -->
   <section class="contact" id="contact" style="background-color: #F2FFF6;">
     <h2 class="section-title1 js-fadeup">プロトピアへお問い合わせ</h2>
@@ -601,7 +699,61 @@ EOT;
       <div class="form-group">
         <label class="label">プライバシーポリシー</label>
         <div class="policy-box">
-          個人情報はお問い合わせ対応以外の目的では使用しません。
+          <p>株式会社CAREARC（以下「弊社」といいます。）は、お客様の個人情報の保護について非常に重要なものと認識し、個人情報の保護に関する法律（以下「個人情報保護法」といいます。）の定める個人情報を、以下のプライバシーポリシー（以下「本ポリシー」といいます。）に従って、適切に取得し、適切な取り扱い及び保護に努めるものといたします。</p>
+
+          <h3>個人情報の取得</h3>
+          <p>弊社は、弊社が運営提供するサービス（以下「弊社サービス」といいます。）を通して、お客様の個人情報（個人情報保護法第２条第１項に定義される個人情報を意味します。以下同じ。）を適正な手段により取得いたします。なお、お客様は、本ポリシーに従った個人情報の取得及び取扱いに同意できない場合、弊社サービスを利用することはできません。弊社サービスを利用したお客様は、本ポリシーに同意したものとみなします。</p>
+
+          <h3>個人情報の利用目的について</h3>
+          <p>（１）弊社が、取得・収集・利用するお客様の個人情報には、以下の情報が含まれます。</p>
+          <ol>
+            <li>事業者名、代表者名、担当者名、役職、住所、店舗の名称・所在地、電話番号、メールアドレス、売上高や自己資本、決算年月日などの財務状況に係る情報、申請する事業計画と内容、事業費⽤、振込⼝座、助成金申請に必要な労務情報、その他特定の個人を識別することができる情報</li>
+            <li>弊社サービスの利用に用いられる携帯電話端末等の固有情報（端末固有のID等の個体識別情報等を含む）</li>
+            <li>弊社サービスの利用時に自動で生成・保存されるIPアドレス、お客様からのリクエスト日時、操作履歴情報</li>
+            <li>携帯電話端末等から送信される位置情報</li>
+            <li>決済処理に関する取引情報（弊社との契約情報、取扱商品情報、注文履歴情報、取引履歴情報、決済に関する履歴情報、提携決済事業者に提供された請求情報・支払情報等を含むが、これに限られない）</li>
+            <li>個人情報と一体となった個人の属性に関する情報</li>
+          </ol>
+          <p>（２）弊社は、お客様の個人情報を、以下の目的で利用致します</p>
+          <ol>
+            <li>弊社サービスの運営</li>
+            <li>弊社サービスに関するご案内やご連絡</li>
+            <li>弊社サービスに関するお問い合わせ等への対応</li>
+            <li>弊社サービスに関する弊社の定めた規約、ガイドライン等に違反する行為への対応</li>
+            <li>弊社サービスの改善や解析、または新サービスの開発等</li>
+            <li>弊社サービスや関連会社の商品・サービスに関するお客様への通知</li>
+            <li>弊社サービスに関連する外部サービスへの申請等</li>
+            <li>弊社サービスに関連するキャンペーン等の賞品発送</li>
+            <li>提携サービスの提供又は提携サービスと連携による弊社サービスの提供、お客様のニーズや興味・関心に適合する広告情報等の表示、広告効果の分析</li>
+            <li>お客様のご本人確認</li>
+            <li>統計データの作成及び当該データの第三者への提供</li>
+            <li>広告効果測定のために第三者の運営ツールより個人関連情報を取得し、お申込情報との照合</li>
+            <li>上記目的に付随する利用</li>
+            <li>その他、常識の範囲内で弊社が必要と判断した目的の遂行</li>
+          </ol>
+
+          <h3>個人情報の開示に関する免責</h3>
+          <p>弊社は、本ポリシーに掲げる場合及び個人情報保護法その他の法令により認められる場合を除き、お客様の同意を得ることなく個人情報を第三者に開示することはありません。但し、次の各号に該当する場合はこの限りではありません。</p>
+          <ol>
+            <li>個人情報法保護法、およびその他法令の定める範囲内で利用する場合。</li>
+            <li>国や地方自治体の機関、もしくはそれらから委託を受けた者の要請により開示が必要であると判断した場合で、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがある場合。</li>
+            <li>人の生命、身体や財産の保護のため、お客様の同意を得ることが困難な状況の場合。</li>
+          </ol>
+
+          <h3>個人情報の管理について</h3>
+          <p>弊社は、個人情報へのアクセスの管理、個人情報の持出し手段の制限、外部からの不正なアクセスの防止のための措置その他の個人情報の漏えい、滅失またはき損の防止その他の個人情報の安全管理のために、必要かつ適切な措置を講じます。</p>
+
+          <h3>個人情報の開示、訂正、利用停止等の申請への応対</h3>
+          <p>お客様より、個人情報の利用目的の通知、開示、訂正・追加・削除・利用停止等の申請があった場合、ご本人確認をした上で、当該お客様に対し個人情報保護法の定めに従い、応対いたします。但し、個人情報保護法その他の法令により弊社が開示の義務を負わない場合は、この限りではありません。なお、当該申請に際し発生した通信費、交通費、及びご本人確認の際にご用意いただく資料等に関する費用につきましては、全てお客様のご負担とさせていただきます。</p>
+
+          <h3>個人情報の第三者提供について</h3>
+          <p>弊社は、法令に定める場合を除き、個人情報を、事前に本人の同意を得ることなく第三者に提供しません。個人情報の開示・訂正・利用停止・削除について 当法人はご提供いただきました個人情報について、ご本人より自己情報の開示・訂正・利用停止・削除等のご依頼があった場合は、ご本人を確認した上で合理的な範囲で速やかに対応させていただきます。</p>
+
+          <h3>問い合わせ窓口について</h3>
+          <p>弊社の個人情報の取り扱いにつきまして、ご意見、ご質問、ご要望等がございましたら、下記までご連絡下さるようお願いいたします。</p>
+          <p>株式会社CAREARC</p>
+          <p>〒150-0021 東京都渋谷区恵比寿西2-21-1 ジョワレ代官山4F</p>
+          <p>Mail：info@carearc.co.jp</p>
         </div>
         <label class="check">
           <input type="checkbox" name="agree" required>
@@ -645,7 +797,7 @@ EOT;
   <!-- SNS -->
   <ul class="footer-sns">
     <!-- <li><a href="#"><img src="img/x.png" alt="X"></a></li> -->
-    <li><a href="#"><img src="img/Instagram.png" alt="Instagram"></a></li>
+    <li><a href="https://www.instagram.com/future_land_protopia"><img src="img/Instagram.png" alt="Instagram"></a></li>
     <!-- <li><a href="#"><img src="img/YouTube.png" alt="YouTube"></a></li> -->
     <!--  
     <li><a href="#"><img src="img/icon-threads.svg" alt="Threads"></a></li>
@@ -653,7 +805,7 @@ EOT;
     -->
   </ul>
 
-    <p style="font-size: 10px;">© Future Land Project</p>
+    <p style="font-size: 10px;">© Future Land Protopia</p>
   </footer>
 
 

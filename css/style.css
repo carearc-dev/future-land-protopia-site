@@ -502,6 +502,10 @@ img.item {
   font-weight: 200;
 }
 
+.character-copy-cameron .cam-line {
+  display: inline;
+}
+
 /* ================= MAP Tooltip ================= */
 
 .map-wrapper {
@@ -1140,6 +1144,154 @@ h3.text {
 
 
 
+/* ===== Message ===== */
+.message {
+  position: relative;
+  overflow: hidden;
+  background: #f8efec;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.message::before,
+.message::after {
+  display: none;
+}
+
+.message-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+}
+
+.message-label {
+  display: block;
+  margin-bottom: 14px;
+  padding: 0;
+  background: transparent;
+  color: var(--color-font);
+  border-radius: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.message-title {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  color: var(--color-font);
+  font-size: 30px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  font-weight: 900;
+  text-align: center;
+}
+
+.message-title-accent {
+  color: var(--accent-2);
+}
+
+.message-lead {
+  margin: 0 auto 8px;
+  font-size: 20px;
+  line-height: 1.8;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.message-lead,
+.message-text,
+.message-from {
+  padding-bottom: 0.16em;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--accent-1);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.34em;
+}
+
+.message-text {
+  margin: 0 auto;
+  font-size: 19px;
+  line-height: 1.9;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.message-from {
+  margin-top: 8px;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-font);
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .message {
+    padding: 70px 18px;
+  }
+
+  .message::before,
+  .message::after {
+    width: 120px;
+    height: 120px;
+  }
+
+  .message-inner {
+    padding: 42px 22px 38px;
+    border-radius: 32px;
+  }
+
+  .message-title {
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 22px;
+    line-height: 1.65;
+    letter-spacing: 0.04em;
+  }
+
+  .message-title > span {
+    display: block;
+    width: 100%;
+  }
+
+  .message-title-accent {
+    display: inline;
+    width: auto;
+  }
+
+  .message-lead {
+    font-size: 15px;
+    line-height: 2;
+    letter-spacing: 0.04em;
+  }
+
+  .message-text {
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 0.04em;
+  }
+
+  .message-from {
+    margin-top: 28px;
+    font-size: 15px;
+  }
+}
+
+
 /* ===== Contact ===== */
 
 .contact {
@@ -1211,10 +1363,38 @@ textarea {
 
 .policy-box {
   background: #f7eee9;
-  padding: 12px;
+  padding: 16px;
   border-radius: 6px;
   font-size: 12px;
+  line-height: 1.8;
   margin-bottom: 10px;
+  max-height: 260px;
+  overflow-y: auto;
+  border: 1px solid rgba(83, 55, 42, 0.12);
+  color: #4a3428;
+  -webkit-overflow-scrolling: touch;
+}
+
+.policy-box h3 {
+  font-size: 13px;
+  margin: 18px 0 8px;
+}
+
+.policy-box h3:first-child {
+  margin-top: 0;
+}
+
+.policy-box p {
+  margin: 0 0 12px;
+}
+
+.policy-box ol {
+  margin: 0 0 14px 18px;
+  padding: 0;
+}
+
+.policy-box li {
+  margin-bottom: 8px;
 }
 
 .check {
@@ -1376,6 +1556,48 @@ textarea {
 
   .goods {
     border-radius: 210px;
+  }
+
+  .character-copy-cameron {
+    line-height: 1.8;
+  }
+
+  .character-copy-cameron br {
+    display: none;
+  }
+
+  .character-copy-cameron .cam-line {
+    display: block;
+  }
+
+  .character-copy-cameron .cam-line-1::before {
+    content: "キャメロンはちょっと";
+  }
+
+  .character-copy-cameron .cam-line-1 {
+    font-size: 0;
+  }
+
+  .character-copy-cameron .cam-line-1::before {
+    font-size: 15px;
+  }
+
+  .character-copy-cameron .cam-line-1::after {
+    content: "おてんばですが、";
+    display: block;
+    font-size: 15px;
+  }
+
+  .character-copy-cameron .cam-line-2::before {
+    content: "ファッション楽しいことを";
+  }
+
+  .character-copy-cameron .cam-line-2 {
+    font-size: 0;
+  }
+
+  .character-copy-cameron .cam-line-2::before {
+    font-size: 15px;
   }
 
 }
@@ -1673,6 +1895,11 @@ textarea {
     margin-right: 13px;
   }
 
+  .box > p {
+    font-size: 16px !important;
+    line-height: 165px !important;
+  }
+
   .stampText {
     padding: 0 10px;
   }
@@ -1818,5 +2045,203 @@ textarea {
   }
   .popup-message {
     font-size: 1rem;
+  }
+}
+/* ================= Message Responsive追加 ================= */
+/* タブレット */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .message {
+    padding: 90px 24px;
+    border-radius: 210px;
+  }
+
+  .message::before,
+  .message::after {
+    width: 150px;
+    height: 150px;
+  }
+
+  .message-inner {
+    max-width: 720px;
+    padding: 56px 34px 50px;
+    border-radius: 42px;
+  }
+
+  .message-label {
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+
+  .message-title {
+    gap: 18px;
+    font-size: 28px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .message-lead {
+    font-size: 19px;
+    line-height: 2;
+  }
+
+  .message-text {
+    font-size: 16px;
+    line-height: 2.1;
+  }
+
+  .message-from {
+    font-size: 18px;
+  }
+}
+
+/* スマホ */
+@media (max-width: 767px) {
+  .message {
+    padding: 64px 16px;
+    border-radius: 100px;
+  }
+
+  .message::before {
+    left: -52px;
+    top: -52px;
+  }
+
+  .message::after {
+    right: -52px;
+    bottom: -52px;
+  }
+
+  .message-inner {
+    width: 100%;
+    padding: 40px 20px 36px;
+    border-width: 2px;
+    border-radius: 30px;
+  }
+
+  .message-label {
+    padding: 5px 16px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  .message-title {
+    display: block;
+    font-size: 22px;
+    line-height: 1.65;
+    letter-spacing: 0.03em;
+    margin-bottom: 24px;
+  }
+
+  .message-title > span {
+    display: block;
+    width: 100%;
+  }
+
+  .message-title-accent {
+    display: inline;
+    width: auto;
+  }
+
+  .message-lead {
+    margin-bottom: 22px;
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 0.03em;
+  }
+
+  .message-text {
+    font-size: 13px;
+    line-height: 2;
+    letter-spacing: 0.03em;
+  }
+
+  .message-from {
+    margin-top: 26px;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* 小さめスマホ */
+@media (max-width: 390px) {
+  .message {
+    padding: 56px 12px;
+  }
+
+  .message-inner {
+    padding: 34px 16px 32px;
+  }
+
+  .message-title {
+    font-size: 20px;
+  }
+
+  .message-lead {
+    font-size: 13px;
+  }
+
+  .message-text {
+    font-size: 12px;
+  }
+}
+
+/* Message fine tuning */
+.message-lead,
+.message-text,
+.message-from {
+  letter-spacing: 5px;
+  line-height: 2;
+}
+
+.message-lead {
+  margin-bottom: 22px;
+}
+
+.message-text {
+  margin-bottom: 22px;
+}
+
+.message-from {
+  margin-top: 32px;
+}
+
+@media (max-width: 1024px) {
+  .message-lead,
+  .message-text,
+  .message-from {
+    letter-spacing: 3px !important;
+    line-height: 2 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .message-lead,
+  .message-text,
+  .message-from {
+    letter-spacing: 1.6px !important;
+    line-height: 2.05 !important;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+  }
+
+  .message-lead {
+    margin-bottom: 24px;
+  }
+
+  .message-text {
+    margin-bottom: 24px;
+  }
+
+  .message-from {
+    margin-top: 34px;
+  }
+}
+
+@media (max-width: 390px) {
+  .message-lead,
+  .message-text,
+  .message-from {
+    letter-spacing: 1px !important;
+    line-height: 2.05 !important;
   }
 }
