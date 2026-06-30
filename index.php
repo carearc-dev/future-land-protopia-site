@@ -187,9 +187,9 @@ EOT;
           <img src="img/character01.png" alt="エリオット" class="item js-fadeup-1">
         </div>
         <p class="character-name">Elliot（エリオット）</p>
-        <p class="character-copy">やさしくて頼れるくまの子。みん<br>
-          なのことをいつも気にかけてくれる、<br>
-          優しい存在。</p>
+        <p class="character-copy">普段はおっとり穏やかな、<br>
+          くまの男の子。やさしい空気で<br>
+          みんなをほっと包んでくれる。</p>
       </article>
 
       <article class="character-card">
@@ -197,9 +197,9 @@ EOT;
           <img src="img/character02.png" alt="フラっティ" class="item js-fadeup-1">
         </div>
         <p class="character-name">Flatty（フラッティ）</p>
-        <p class="character-copy">元気いっぱいでおしゃべり好きなうさ<br>
-          ぎの子。どんなときも明るく、<br>
-          楽しい空気を作ってくれるよ♪</p>
+        <p class="character-copy">せっかちなところもあるけど、<br>
+          正義感はだれより強いうさぎの子。<br>
+          こまっている子は放っておけないよ！</p>
       </article>
 
       <article class="character-card">
@@ -207,10 +207,9 @@ EOT;
           <img src="img/character03.png" alt="キャメロン" class="item js-fadeup-1">
         </div>
         <p class="character-name">Cameron（キャメロン）</p>
-        <p class="character-copy">おっとりマイペースなかめの子。 <br>
-          ゆっくりだけど、いつもみんなを<br>
-          よく見ていて、あたたかい気持ちを<br>
-          届けてくれる。</p>
+        <p class="character-copy">ちょっぴりおてんばで、<br>
+          おしゃれや楽しいことが大好きな<br>
+          かめの女の子。いつも元気いっぱい♪</p>
       </article>
     </div>
   </section>
