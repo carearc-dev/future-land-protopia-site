@@ -428,10 +428,10 @@ section {
 }
 
 /* ファーストビュー動画は常に画面幅いっぱいに（左右の黒帯防止） */
+/* ※ display は .PC / .SP の出し分けに任せる（ここで block を付けるとPCでSP動画が出て崩れる） */
 .fv-movie {
   width: 100%;
   height: auto;
-  display: block;
 }
 
 
