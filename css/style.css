@@ -421,6 +421,7 @@ section {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: var(--color-main); /* 動画が覆わない部分も黒でなくサイト色に */
   /*
   padding-top: 80px;
   */
@@ -430,6 +431,7 @@ section {
 .fv-movie {
   width: 100%;
   height: auto;
+  display: block;
 }
 
 

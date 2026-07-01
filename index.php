@@ -73,7 +73,7 @@ EOT;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Future Land Protopia</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=<?php echo @filemtime(__DIR__ . '/css/style.css'); ?>">
 
   <!-- font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -136,8 +136,8 @@ EOT;
 
   <!-- ================= Hero ================= -->
   <div class="hero" id="fv">
-    <video src="img/PC-fv.mp4" 100% autoplay muted loop playsinline class="fv-movie PC"></video>
-    <video src="img/SP-fv.mp4" 100% autoplay muted loop playsinline class="fv-movie SP"></video>
+    <video src="img/PC-fv.mp4" autoplay muted loop playsinline class="fv-movie PC"></video>
+    <video src="img/SP-fv.mp4" autoplay muted loop playsinline class="fv-movie SP"></video>
   </div>
 
   <!-- ================= Concept ================= -->
@@ -657,6 +657,6 @@ EOT;
   </footer>
 
 
-  <script src="js/script.js"></script>
+  <script src="js/script.js?v=<?php echo @filemtime(__DIR__ . '/js/script.js'); ?>"></script>
 </body>
 </html>
