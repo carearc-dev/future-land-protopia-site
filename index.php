@@ -366,7 +366,8 @@ EOT;
     </p>
 </div>
 
-<div class="buttonBox">
+<!-- ▼LINEスタンプDLボタン：一時非表示（配布開始時に style の display:none を外す） -->
+<div class="buttonBox" style="display: none;">
   <a href="" style="text-decoration: none;">
     <div class="button">
       <p class="btnText">ダウンロードはこちら</p>
@@ -478,17 +479,17 @@ EOT;
       <!-- 繰り返し -->
       <article class="newsItem">
         <div class="newsImg"></div>
-        <time class="newsDate">2026.02.14</time>
-        <h3 class="newsItemTitle">新ページ公開しました！</h3>
+        <time class="newsDate">2026.06.01</time>
+        <h3 class="newsItemTitle">公式サイトを公開しました！</h3>
 
         <div class="newsTags">
           <span class="tag">新着情報</span>
-          <span class="tag">告知情報</span>
+          <span class="tag">お知らせ</span>
           <span class="tag">リリース</span>
         </div>
 
         <p class="newsText">
-          イベントに対する説明文や内容を記載していきます。
+          FUTURE LAND PROTOPIA の公式サイトが公開になりました。フラッティたちが暮らすプロトピアの世界を、これから少しずつお届けしていきます。最新情報もこのページで発信していくので、どうぞお楽しみに♪
         </p>
       </article>
        <!--  
