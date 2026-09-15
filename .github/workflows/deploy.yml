@@ -16,6 +16,11 @@ name: Deploy to Sakura
 on:
   push:
     branches: [main]
+    # ドキュメントだけの変更ではデプロイを動かさない。
+    # （*.md は下の mirror で --exclude-glob '*.md' により、そもそもサーバーへ送られない）
+    paths-ignore:
+      - "**/*.md"
+      - ".gitignore"
   workflow_dispatch:
 
 concurrency:
