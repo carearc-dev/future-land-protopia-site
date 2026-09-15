@@ -101,7 +101,7 @@ EOT;
   <!-- font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hurricane&family=Manrope:wght@200..800&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -118,13 +118,13 @@ EOT;
     <!-- PC NAV -->
     <nav class="pcNav">
       <ul>
-        <li><img src="img/icon01.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#concept">Concept</a></li>
-        <li><li><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#characters">Friends</a></li>
-        <li><li><img src="img/icon01.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
+        <li><img src="img/icon01.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#concept">Concept</a></li>
+        <li><img src="img/icon02.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#characters">Friends</a></li>
+        <li><img src="img/icon01.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
         <!-- ▼ECグッズ：一時非表示（再開時は style="display:none" を外す） -->
-        <li style="display: none;"><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#goods">Item</a></li>
-        <li><li><img src="img/icon01.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#news">News</a></li>
-        <li><li><img src="img/icon02.png" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#contact">Contact</a></li>
+        <li style="display: none;"><img src="img/icon02.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#goods">Item</a></li>
+        <li><img src="img/icon01.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#news">News</a></li>
+        <li><img src="img/icon02.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
@@ -140,18 +140,18 @@ EOT;
   <!-- Close Button -->
   <button class="spClose" aria-label="close menu">✕</button>
     <ul>
-      <li><img src="img/icon01.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#concept">Concept</a></li>
-      <li><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#characters">Friends</a></li>
-      <li><img src="img/icon01.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
+      <li><img src="img/icon01.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#concept">Concept</a></li>
+      <li><img src="img/icon02.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#characters">Friends</a></li>
+      <li><img src="img/icon01.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
       <!-- ▼ECグッズ：一時非表示（再開時は style="display:none" を外す） -->
-      <li style="display: none;"><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#goods">Item</a></li>
-      <li><img src="img/icon01.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#news">News</a></li>
-      <li><img src="img/icon02.png" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#contact">Contact</a></li>
+      <li style="display: none;"><img src="img/icon02.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#goods">Item</a></li>
+      <li><img src="img/icon01.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#news">News</a></li>
+      <li><img src="img/icon02.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#contact">Contact</a></li>
     </ul>
 
         <!-- ★ 追加するキャラクター -->
     <div class="spNav-character">
-      <img src="img/Flatty-Anime.gif" alt="character">
+      <img src="img/Flatty-Anime.webp" alt="" decoding="async" fetchpriority="low">
     </div>
 </nav>
 </header>
@@ -159,8 +159,12 @@ EOT;
 
   <!-- ================= Hero ================= -->
   <div class="hero" id="fv">
-    <video src="img/PC-fv.mp4" autoplay muted loop playsinline class="fv-movie PC"></video>
-    <video src="img/SP-fv.mp4" autoplay muted loop playsinline class="fv-movie SP"></video>
+    <video autoplay muted loop playsinline class="fv-movie">
+      <source src="img/fv-pc.mp4" type="video/mp4" media="(min-width: 768px)">
+      <source src="img/fv-sp.mp4" type="video/mp4">
+    </video>
+    <!-- 読み込み待ちの静止画も画面幅に合わせる -->
+    <script>document.currentScript.previousElementSibling.poster = matchMedia('(min-width: 768px)').matches ? 'img/fv-pc-poster.jpg' : 'img/fv-sp-poster.jpg';</script>
   </div>
 
   <!-- ================= Concept ================= -->
@@ -168,7 +172,7 @@ EOT;
     <h2 class="section-title js-fadeup"><span class="line">FUTURE LAND PROTOPIA</span></h2>
 
     <div class="concept-visual">
-      <img src="img/concept-img.png" alt="" class="concept-img">
+      <img src="img/concept-img.webp" alt="" class="concept-img" decoding="async">
     </div>
 
     <p class="concept-text js-fadeup">
@@ -207,7 +211,7 @@ EOT;
     <div class="character-list">
       <article class="character-card">
         <div class="character-image">
-          <img src="img/character01.png" alt="エリオット" class="item js-fadeup-1">
+          <img src="img/character01.webp" alt="エリオット" class="item js-fadeup-1">
         </div>
         <p class="character-name">Elliot（エリオット）</p>
         <p class="character-copy">普段はおっとり穏やかな、<br>
@@ -217,7 +221,7 @@ EOT;
 
       <article class="character-card">
         <div class="character-image">
-          <img src="img/character02.png" alt="フラっティ" class="item js-fadeup-1">
+          <img src="img/character02.webp" alt="フラっティ" class="item js-fadeup-1">
         </div>
         <p class="character-name">Flatty（フラッティ）</p>
         <p class="character-copy">せっかちなところもあるけど、<br>
@@ -227,7 +231,7 @@ EOT;
 
       <article class="character-card">
         <div class="character-image">
-          <img src="img/character03.png" alt="キャメロン" class="item js-fadeup-1">
+          <img src="img/character03.webp" alt="キャメロン" class="item js-fadeup-1">
         </div>
         <p class="character-name">Cameron（キャメロン）</p>
         <p class="character-copy">ちょっぴりおてんばで、<br>
@@ -301,17 +305,17 @@ EOT;
 
   <!-- キャラ1 -->
   <div class="map-character char-elliot">
-    <img src="img/Elliot-Anime.gif" alt="エリオット">
+    <img src="img/Elliot-Anime.webp" alt="エリオット" loading="lazy" decoding="async">
   </div>
 
   <!-- キャラ2 -->
   <div class="map-character char-flatty">
-    <img src="img/Flatty-Anime.gif" alt="フラッティ">
+    <img src="img/Flatty-Anime.webp" alt="フラッティ" loading="lazy" decoding="async">
   </div>
 
   <!-- キャラ3 -->
   <div class="map-character char-cameron">
-    <img src="img/Cameron-Anime.gif" alt="キャメロン">
+    <img src="img/Cameron-Anime.webp" alt="キャメロン" loading="lazy" decoding="async">
   </div>
 
 </div>
@@ -452,7 +456,6 @@ EOT;
     </div>
   </a>
 </div>
--->
 </section>
 
   <!-- ================= Goods ================= -->
@@ -480,7 +483,7 @@ EOT;
         </p>
       </article>
 
-       同じ構造を繰り返す 
+      <!-- 同じ構造を繰り返す -->
       <article class="goodsItem">
         <div class="goodsImg"></div>
         <button class="buyBtn">BUY</button>
@@ -543,7 +546,6 @@ EOT;
 
   </div>
 </section>
--->
 
   <!-- ================= Nwes ================= -->
 <section class="news" id="news" style="background-color:var(--color-main)">
@@ -807,7 +809,7 @@ EOT;
   <!-- SNS -->
   <ul class="footer-sns">
     <!-- <li><a href="#"><img src="img/x.png" alt="X"></a></li> -->
-    <li><a href="https://www.instagram.com/future_land_protopia" target="_blank" rel="noopener"><img src="img/Instagram.png" alt="Instagram"></a></li>
+    <li><a href="https://www.instagram.com/future_land_protopia" target="_blank" rel="noopener"><img src="img/Instagram.webp" alt="Instagram"></a></li>
     <!-- <li><a href="#"><img src="img/YouTube.png" alt="YouTube"></a></li> -->
     <!--  
     <li><a href="#"><img src="img/icon-threads.svg" alt="Threads"></a></li>
