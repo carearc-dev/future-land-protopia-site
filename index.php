@@ -120,7 +120,7 @@ EOT;
       <ul>
         <li><img src="img/icon01.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#concept">Concept</a></li>
         <li><img src="img/icon02.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#characters">Friends</a></li>
-        <li><img src="img/icon01.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
+        <li><img src="img/icon01.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#activity">Activity</a></li>
         <!-- ▼ECグッズ：一時非表示（再開時は style="display:none" を外す） -->
         <li style="display: none;"><img src="img/icon02.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#goods">Item</a></li>
         <li><img src="img/icon01.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#news">Message Board</a></li>
@@ -142,7 +142,7 @@ EOT;
     <ul>
       <li><img src="img/icon01.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#concept">Concept</a></li>
       <li><img src="img/icon02.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#characters">Friends</a></li>
-      <li><img src="img/icon01.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
+      <li><img src="img/icon01.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#activity">Activity</a></li>
       <!-- ▼ECグッズ：一時非表示（再開時は style="display:none" を外す） -->
       <li style="display: none;"><img src="img/icon02.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#goods">Item</a></li>
       <li><img src="img/icon01.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#news">Message Board</a></li>
@@ -328,113 +328,62 @@ EOT;
 </section>
 
 
-  <!-- ================= LINE Stamp ================= -->
-  <section class="stamp" id="stamp" style="background-color:var(--color-main)">
+  <!-- ================= Activity（旧 LINE Stamp） ================= -->
+  <!-- 2026-10：LINEスタンプの公開が先になるため、「3匹の活動紹介」「世界の国の取り組み」の2段スライダーに変更。
+       画像は縦長4:5（img/ に 448×560 の WebP で置く）。
+       【更新のしかた】各段の slider-group の中に、流したい順に枠を1回だけ並べる。
+       上段は「画像→coming soon」を交互に並べる（画像の間の coming soon は1〜2枠）。画像が増えたら coming soon を画像に置き換える／追加する。
+       大きい画面でも途切れないための繰り返しと、ループ用の複製は js/script.js が自動で作るので、HTMLで同じ枠をくり返し書かない。 -->
+  <section class="stamp activity" id="activity" style="background-color:var(--color-main)">
+
+    <!-- 上段：3匹の活動紹介 -->
+    <div class="activity-block">
+      <h2 class="subtitle activity-title js-fadeup"><span class="pick" style="color: var(--accent-2);">3</span>匹の活動紹介</h2>
+      <div class="slider-row">
+        <div class="slider-track">
+          <div class="slider-group">
+            <div class="box box-photo"><img src="img/activity-01.webp" alt="花畑で花束を持つエリオット・フラッティ・キャメロン" width="448" height="560" decoding="async"></div>
+            <div class="box box-soon box-a"><p>coming soon</p></div>
+            <div class="box box-photo"><img src="img/activity-02.webp" alt="ひまわり畑でひまわりの花束を持つエリオット" width="448" height="560" decoding="async"></div>
+            <div class="box box-soon box-b"><p>coming soon</p></div>
+            <div class="box box-photo"><img src="img/activity-03.webp" alt="花畑でバラの花束を持つフラッティと、花束を持つキャメロン" width="448" height="560" decoding="async"></div>
+            <div class="box box-soon box-a"><p>coming soon</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 下段：世界の国の取り組み（素材ができたら coming soon を画像に置き換える） -->
+    <div class="activity-block">
+      <h2 class="subtitle activity-title js-fadeup"><span class="pick" style="color: var(--accent-2);">世</span>界の国の取り組み</h2>
+      <div class="slider-row">
+        <div class="slider-track track-offset">
+          <div class="slider-group">
+            <div class="box box-soon box-a"><p>coming soon</p></div>
+            <div class="box box-soon box-b"><p>coming soon</p></div>
+            <div class="box box-soon box-a"><p>coming soon</p></div>
+            <div class="box box-soon box-b"><p>coming soon</p></div>
+            <div class="box box-soon box-a"><p>coming soon</p></div>
+            <div class="box box-soon box-b"><p>coming soon</p></div>
+            <div class="box box-soon box-a"><p>coming soon</p></div>
+            <div class="box box-soon box-b"><p>coming soon</p></div>
+            <div class="box box-soon box-a"><p>coming soon</p></div>
+            <div class="box box-soon box-b"><p>coming soon</p></div>
+            <div class="box box-soon box-a"><p>coming soon</p></div>
+            <div class="box box-soon box-b"><p>coming soon</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ▼LINEスタンプ：公開が先になったため見出し・説明文・DLボタンをまとめて一時非表示
+         （スタンプ公開時に display:none を外し、配置とDLボタンの href を見直す） -->
+    <div class="stamp-later" style="display: none;">
   <div class="Title-Box">
     <h2 class="section-title1 js-fadeup"><img src="img/line.png" alt="LINE" class="lineimage"></h2>
     <p class="subtitle js-fadeup">
       <span class="pick" style="color: var(--accent-2);">ス</span>タンプ
     </p>
-  </div>
-  <div class="line-slider">
-    <!-- 上段 -->
-    <div class="slider-row row-top">
-      <div class="slider-track">
-        <!-- 7個 × 2（ループ用に複製） -->
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 下段 -->
-    <div class="slider-row row-bottom">
-      <div class="slider-track reverse">
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-
-        <div class="box" style="background-color: var(--color-sub);">
-        <p style="font-size: 25px; color: var(--color-font);line-height: 225px; ">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--accent-1);">
-          <p style="font-size: 25px; color: var(--color-main); line-height: 225px;">coming soon</p>
-        </div>
-        <div class="box" style="background-color: var(--color-sub);">
-          <p style="font-size: 25px; color: var(--color-font); line-height: 225px;">coming soon</p>
-        </div>
-      </div>
-    </div>
   </div>
 
 <div class="stampText">
@@ -448,7 +397,6 @@ EOT;
     </p>
 </div>
 
-<!-- ▼LINEスタンプDLボタン：一時非表示（配布開始時に style の display:none を外す） -->
 <div class="buttonBox" style="display: none;">
   <a href="" style="text-decoration: none;">
     <div class="button">
@@ -456,7 +404,8 @@ EOT;
     </div>
   </a>
 </div>
-</section>
+    </div>
+  </section>
 
   <!-- ================= Goods ================= -->
   <!-- ▼ECグッズショップ：一時非表示（再開時は style の display:none を外す） -->
@@ -557,10 +506,22 @@ EOT;
 
     <div class="newsList">
 
-      <!-- 繰り返し -->
+      <!-- 繰り返し（新しい記事を上に追加する。画像は縦長4:5、img/ に 720×900 の WebP で置く） -->
       <article class="newsItem">
-        <div class="newsImg"></div>
-        <time class="newsDate">2026.06.01</time>
+        <div class="newsImg"><img src="img/news-20261021.webp" alt="花畑で花束を持つエリオット・フラッティ・キャメロン" width="720" height="900" loading="lazy" decoding="async"></div>
+        <time class="newsDate" datetime="2026-10-21">2026.10.21</time>
+        <h3 class="newsItemTitle">「FUTURE LAND PROTOPIA」</h3>
+
+        <p class="newsText">
+          "地球に優しい" "人に優しい"ことを<br>
+          お互いに助け合いながら少しずつでも出来るといいね🎶
+        </p>
+      </article>
+
+      <article class="newsItem">
+        <!-- 画像のない記事はロゴを表示 -->
+        <div class="newsImg newsImg-logo"><img src="img/logo.png" alt="FUTURE LAND PROTOPIA" width="287" height="104" loading="lazy" decoding="async"></div>
+        <time class="newsDate" datetime="2026-06-01">2026.06.01</time>
         <h3 class="newsItemTitle">公式サイトを公開しました！</h3>
 
         <p class="newsText">
