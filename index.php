@@ -563,12 +563,6 @@ EOT;
         <time class="newsDate">2026.06.01</time>
         <h3 class="newsItemTitle">公式サイトを公開しました！</h3>
 
-        <div class="newsTags">
-          <span class="tag">新着情報</span>
-          <span class="tag">お知らせ</span>
-          <span class="tag">リリース</span>
-        </div>
-
         <p class="newsText">
           FUTURE LAND PROTOPIA の公式サイトが公開になりました。フラッティたちが暮らすプロトピアの世界を、これから少しずつお届けしていきます。最新情報もこのページで発信していくので、どうぞお楽しみに♪
         </p>
