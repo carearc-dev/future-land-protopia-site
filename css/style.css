@@ -1968,12 +1968,15 @@ textarea {
     font-size: 12px;
 }
 
+/* 画像と本文の幅をそろえる（PCと同じ最大幅で中央寄せ） */
 .newsItem {
+  width: 100%;
+  max-width: 402px;
   margin: 0 auto;
 }
 
 .newsImg {
-  width: 280px;
+  width: 100%;
 }
 
 .footer-chara img {

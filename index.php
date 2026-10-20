@@ -123,7 +123,7 @@ EOT;
         <li><img src="img/icon01.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
         <!-- ▼ECグッズ：一時非表示（再開時は style="display:none" を外す） -->
         <li style="display: none;"><img src="img/icon02.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#goods">Item</a></li>
-        <li><img src="img/icon01.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#news">News</a></li>
+        <li><img src="img/icon01.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#news">Message Board</a></li>
         <li><img src="img/icon02.webp" alt="" class="icon" style="width: 30px; max-width: 100px;"><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -145,7 +145,7 @@ EOT;
       <li><img src="img/icon01.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#stamp">Stamp</a></li>
       <!-- ▼ECグッズ：一時非表示（再開時は style="display:none" を外す） -->
       <li style="display: none;"><img src="img/icon02.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#goods">Item</a></li>
-      <li><img src="img/icon01.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#news">News</a></li>
+      <li><img src="img/icon01.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#news">Message Board</a></li>
       <li><img src="img/icon02.webp" alt="" class="icon" style="width: 40px; max-width: 100px;"><a href="#contact">Contact</a></li>
     </ul>
 
@@ -547,12 +547,12 @@ EOT;
   </div>
 </section>
 
-  <!-- ================= Nwes ================= -->
+  <!-- ================= Message Board ================= -->
 <section class="news" id="news" style="background-color:var(--color-main)">
   <div class="inner-news">
     <div class="Title-Box">
-      <h2 class="section-title1 js-fadeup">News</h2>
-        <p class="subtitle js-fadeup"><span class="pick" style="color: var(--accent-2);">新</span>着情報</p>
+      <h2 class="section-title1 js-fadeup">Message Board</h2>
+        <p class="subtitle js-fadeup"><span class="pick" style="color: var(--accent-2);">メ</span>ッセージボード</p>
     </div>
 
     <div class="newsList">
@@ -562,12 +562,6 @@ EOT;
         <div class="newsImg"></div>
         <time class="newsDate">2026.06.01</time>
         <h3 class="newsItemTitle">公式サイトを公開しました！</h3>
-
-        <div class="newsTags">
-          <span class="tag">新着情報</span>
-          <span class="tag">お知らせ</span>
-          <span class="tag">リリース</span>
-        </div>
 
         <p class="newsText">
           FUTURE LAND PROTOPIA の公式サイトが公開になりました。フラッティたちが暮らすプロトピアの世界を、これから少しずつお届けしていきます。最新情報もこのページで発信していくので、どうぞお楽しみに♪
