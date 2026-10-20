@@ -867,15 +867,74 @@ img.item {
   animation: slide-right 30s linear infinite;
 }
 
+/* ===== Activity（3匹の活動紹介／世界の国の取り組み） =====
+   枠は縦長4:5。サイズはここの変数だけで調整する（スマホは下の767px以下で上書き） */
+.activity {
+  --tile-w: 224px;
+  --tile-h: 280px;
+  --tile-gap: 20px;
+}
+
+.activity-block + .activity-block {
+  margin-top: 60px;
+}
+
+/* HTMLの1グループを js/script.js が画面幅に合わせてくり返し、同じグループをもう1組つなげる。
+   半分（＝1グループ分）流したら先頭に戻すことで切れ目なくループする */
+.slider-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* マウスを乗せている間は止めて、写真をゆっくり見られるようにする */
+.activity .slider-row:hover .slider-track {
+  animation-play-state: paused;
+}
+
+/* 端末で「視差効果を減らす（動きを減らす）」を設定している人には流さない */
+@media (prefers-reduced-motion: reduce) {
+  .activity .slider-track {
+    animation: none;
+  }
+}
+
+/* 下段は上段と枠の位置を半分ずらして、2段が同じ並びに見えないようにする */
+.slider-track.track-offset {
+  margin-left: calc((var(--tile-w) + var(--tile-gap)) / -2);
+}
+
 .box {
-  width: 225px;
-  height: 225px;
-  background: #ddd; 
-  margin-right: 20px;
+  width: var(--tile-w);
+  height: var(--tile-h);
+  background: #ddd;
+  margin-right: var(--tile-gap);
   flex-shrink: 0;
-  border-radius: 12px; 
+  border-radius: 12px;
   overflow: hidden; /* はみ出し防止 */
-  flex-shrink: 0;
+}
+
+.box-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.box-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.box-a {
+  background-color: var(--accent-1);
+  color: var(--color-main);
+}
+
+.box-b {
+  background-color: var(--color-sub);
+  color: var(--color-font);
 }
 
 /* 上段：左へ */
@@ -1091,9 +1150,10 @@ h3.text {
   padding: 80px 0;
 }
 
+/* PCでは記事を2本ずつ横に並べる幅（3本目以降は次の行へ） */
 .inner-news {
-  max-width: 1200px;
-  width: 450px;
+  max-width: 864px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -1114,16 +1174,48 @@ h3.text {
   display: grid;
   gap: 32px;
 
-  /* 最大3カラム */
+  /* 列数は最小幅280pxで決める（PC・タブレットで2カラム。1記事の幅は .newsItem で最大392px） */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   justify-content: center;
 }
 
+.newsItem {
+  width: 100%;
+  max-width: 392px;
+  justify-self: center;
+}
+
+/* 記事画像は縦長4:5 */
 .newsImg {
   background: #f3d6df;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
   margin-bottom: 8px;
   border-radius: 10px;
+  overflow: hidden;
+}
+
+.newsImg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 画像のない記事はロゴを中央に表示 */
+.newsImg.newsImg-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #f3d6df;
+}
+
+/* 手元のロゴ素材は横287pxのため、高解像度の画面でぼやけないよう表示を最大200pxにとどめる */
+.newsImg.newsImg-logo img {
+  width: 70%;
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
 }
 
 .newsDate {
@@ -1912,15 +2004,18 @@ textarea {
     margin-bottom: -14px;
   }
 
-  .box {
-    width: 165px;
-    height: 165px;
-    margin-right: 13px;
+  .activity {
+    --tile-w: 152px;
+    --tile-h: 190px;
+    --tile-gap: 13px;
   }
 
-  .box > p {
-    font-size: 16px !important;
-    line-height: 165px !important;
+  .activity-block + .activity-block {
+    margin-top: 40px;
+  }
+
+  .box-soon {
+    font-size: 16px;
   }
 
   .stampText {
@@ -1971,7 +2066,7 @@ textarea {
 /* 画像と本文の幅をそろえる（PCと同じ最大幅で中央寄せ） */
 .newsItem {
   width: 100%;
-  max-width: 402px;
+  max-width: 392px;
   margin: 0 auto;
 }
 

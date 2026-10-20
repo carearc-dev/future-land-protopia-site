@@ -23,10 +23,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// 速度を動的に変えたい場合
-  const tracks = document.querySelectorAll('.slider-track');
-  tracks.forEach(track => {
-    track.style.animationDuration = '50s';
+// ===== Activity スライダー（右→左に流れる） =====
+// HTMLには各段の枠を1回だけ並べる。ここで
+//  ① 大きい画面でも流れの途中で右端が空かないよう、並びをくり返して幅を足す
+//  ② 同じ並びをもう1組つなげ、半分（＝1組分）流したら先頭に戻すことで切れ目なくループさせる
+// 速さは1枠あたり約7秒（以前の速さ）。枠の数から再生時間を決めるので、画像を増やしても速さは変わらない
+  const SECONDS_PER_TILE = 7;
+
+  const copyTile = (tile) => {
+    const copy = tile.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    copy.querySelectorAll('img').forEach(img => { img.alt = ''; });
+    return copy;
+  };
+
+  document.querySelectorAll('.slider-track').forEach(track => {
+    const group = track.querySelector('.slider-group');
+    if (!group || !group.children.length) return;
+
+    const original = [...group.children];
+    const tileWidth = group.scrollWidth / original.length;
+    // 画面（モニター）の幅＋2枠分。下段は半枠ずらしているので余裕を持たせる
+    const needWidth = Math.max(window.innerWidth, window.screen ? window.screen.width : 0) + tileWidth * 2;
+    for (let i = 0; group.scrollWidth < needWidth && i < 20; i++) {
+      original.forEach(tile => group.appendChild(copyTile(tile)));
+    }
+
+    const loopCopy = group.cloneNode(false);
+    loopCopy.setAttribute('aria-hidden', 'true');
+    [...group.children].forEach(tile => loopCopy.appendChild(copyTile(tile)));
+    track.appendChild(loopCopy);
+
+    track.style.animationDuration = `${group.children.length * SECONDS_PER_TILE}s`;
   });
 
   
