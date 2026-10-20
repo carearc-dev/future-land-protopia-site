@@ -514,7 +514,7 @@ EOT;
 
         <p class="newsText">
           "地球に優しい" "人に優しい"ことを<br>
-          お互いに助け合いながら少しずつでも出来るといいね🎶
+          <span class="phrase">お互いに助け合いながら</span><span class="phrase">少しずつでも出来るといいね🎶</span>
         </p>
       </article>
 

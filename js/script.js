@@ -28,7 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
 //  ① 大きい画面でも流れの途中で右端が空かないよう、並びをくり返して幅を足す
 //  ② 同じ並びをもう1組つなげ、半分（＝1組分）流したら先頭に戻すことで切れ目なくループさせる
 // 速さは1枠あたり約7秒（以前の速さ）。枠の数から再生時間を決めるので、画像を増やしても速さは変わらない
+// 並べ終わるまでは CSS で止めておき（.is-ready が付いたら流す）、途中で途切れた状態を見せない
   const SECONDS_PER_TILE = 7;
+  // 開いたときの画面幅に関係なく、大きいモニター（2560px）でも途切れない分まで並べる
+  const MIN_COVER_WIDTH = 2560;
 
   const copyTile = (tile) => {
     const copy = tile.cloneNode(true);
@@ -37,15 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
     return copy;
   };
 
-  document.querySelectorAll('.slider-track').forEach(track => {
-    const group = track.querySelector('.slider-group');
-    if (!group || !group.children.length) return;
+  const buildSlider = ({ track, group, original }) => {
+    track.querySelectorAll('.slider-group[aria-hidden="true"]').forEach(copy => copy.remove());
+    group.replaceChildren(...original);
 
-    const original = [...group.children];
     const tileWidth = group.scrollWidth / original.length;
-    // 画面（モニター）の幅＋2枠分。下段は半枠ずらしているので余裕を持たせる
-    const needWidth = Math.max(window.innerWidth, window.screen ? window.screen.width : 0) + tileWidth * 2;
-    for (let i = 0; group.scrollWidth < needWidth && i < 20; i++) {
+    // 下段は半枠ずらしているので、画面幅＋2枠分の余裕を持たせる
+    const needWidth = Math.max(window.innerWidth, window.screen ? window.screen.width : 0, MIN_COVER_WIDTH) + tileWidth * 2;
+    for (let i = 0; group.scrollWidth < needWidth && i < 30; i++) {
       original.forEach(tile => group.appendChild(copyTile(tile)));
     }
 
@@ -55,6 +57,29 @@ document.addEventListener("DOMContentLoaded", () => {
     track.appendChild(loopCopy);
 
     track.style.animationDuration = `${group.children.length * SECONDS_PER_TILE}s`;
+    track.classList.add('is-ready');
+  };
+
+  const sliders = [...document.querySelectorAll('.slider-track')]
+    .map(track => {
+      const group = track.querySelector('.slider-group');
+      return group && group.children.length ? { track, group, original: [...group.children] } : null;
+    })
+    .filter(Boolean);
+
+  sliders.forEach(buildSlider);
+
+  // ウィンドウを広げる・別のモニターへ移す・縮小表示にするなどで並びが足りなくなったら作り直す
+  let sliderResizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(sliderResizeTimer);
+    sliderResizeTimer = setTimeout(() => {
+      sliders.forEach(slider => {
+        const { group } = slider;
+        const tileWidth = group.scrollWidth / group.children.length;
+        if (group.scrollWidth < window.innerWidth + tileWidth * 2) buildSlider(slider);
+      });
+    }, 200);
   });
 
   

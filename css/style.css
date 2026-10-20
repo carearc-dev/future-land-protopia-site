@@ -886,6 +886,11 @@ img.item {
   flex-shrink: 0;
 }
 
+/* js/script.js が並びを作り終える（.is-ready が付く）までは流さない。途中で途切れた状態を見せないため */
+.activity .slider-track:not(.is-ready) {
+  animation: none;
+}
+
 /* マウスを乗せている間は止めて、写真をゆっくり見られるようにする */
 .activity .slider-row:hover .slider-track {
   animation-play-state: paused;
@@ -1218,13 +1223,14 @@ h3.text {
   object-fit: contain;
 }
 
+/* 記事の文字（2026-10 亀井さん依頼で大きめに：日付12→14px／見出し14→18px／本文12→15px） */
 .newsDate {
-  font-size: 12px;
+  font-size: 14px;
   color: #999;
 }
 
 .newsItemTitle {
-  font-size: 14px;
+  font-size: 18px;
   margin: 8px 0;
 }
 
@@ -1243,8 +1249,13 @@ h3.text {
 }
 
 .newsText {
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* 文の途中で1〜2文字だけ次の行に落ちないよう、区切りのまとまりごとに改行させる */
+.newsText .phrase {
+  display: inline-block;
 }
 
 
@@ -2103,7 +2114,12 @@ textarea {
   }
 
    .newsItemTitle {
+    font-size: 17px;
     margin: 5px 0;
+  }
+
+  .newsText {
+    font-size: 14px;
   }
 
   .inner-news {
