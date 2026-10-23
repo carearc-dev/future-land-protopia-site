@@ -508,6 +508,21 @@ EOT;
 
       <!-- 繰り返し（新しい記事を上に追加する。画像は縦長4:5、img/ に 720×900 の WebP で置く） -->
       <article class="newsItem">
+        <div class="newsImg"><img src="img/news-20261023.webp" alt="ハロウィンの仮装をしたエリオット・フラッティ・キャメロンと「Happy Halloween to each other.」の文字" width="720" height="900" loading="lazy" decoding="async"></div>
+        <time class="newsDate" datetime="2026-10-23">2026.10.23</time>
+        <h3 class="newsItemTitle">「FUTURE LAND PROTOPIA」</h3>
+
+        <p class="newsText">
+          世界の子どもたちへ<br>
+          <br>
+          こんにちは✨✨✨✨<br>
+          <span class="phrase">フラッティ&amp;キャメロンと</span><span class="phrase">エリオットです！</span><br>
+          家族やお友達と<br>
+          ハッピーハロウィン楽しんでね🎶
+        </p>
+      </article>
+
+      <article class="newsItem">
         <div class="newsImg"><img src="img/news-20261021.webp" alt="花畑で花束を持つエリオット・フラッティ・キャメロン" width="720" height="900" loading="lazy" decoding="async"></div>
         <time class="newsDate" datetime="2026-10-21">2026.10.21</time>
         <h3 class="newsItemTitle">「FUTURE LAND PROTOPIA」</h3>
