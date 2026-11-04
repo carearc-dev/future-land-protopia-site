@@ -516,15 +516,15 @@ EOT;
 
         <p class="newsText">
           <strong>フラッティ</strong><br>
-          「<span class="phrase">薔薇のハーブティは</span><span class="phrase">優雅な香りでしょ？</span><br>
-          <span class="phrase">ゆっくり味わうと、</span><span class="phrase">心がとっても落ち着くね！」</span><br>
+          <span class="phrase">薔薇のハーブティは</span><span class="phrase">優雅な香りでしょ？</span><br>
+          <span class="phrase">ゆっくり味わうと、</span><span class="phrase">心がとっても落ち着くね！</span><br>
           <br>
           <strong>エリオット</strong><br>
-          「<span class="phrase">わぁ！</span> <span class="phrase">このハーブティ飲んだら、</span><span class="phrase">心までぽかぽかしてきたよ🎶」</span><br>
+          <span class="phrase">わぁ！</span> <span class="phrase">このハーブティ飲んだら、</span><span class="phrase">心までぽかぽかしてきたよ🎶</span><br>
           <br>
           <strong>キャメロン</strong><br>
-          「<span class="phrase">うふふ…...</span><span class="phrase">ガーベラみたいな可愛いカップで飲むと、</span><span class="phrase">もっと美味しく感じるね！</span><br>
-          <span class="phrase">みんなと過ごすティータイム、</span><span class="phrase">大好き💕」</span>
+          <span class="phrase">うふふ…...</span><span class="phrase">ガーベラみたいな可愛いカップで飲むと、</span><span class="phrase">もっと美味しく感じるね！</span><br>
+          <span class="phrase">みんなと過ごすティータイム、</span><span class="phrase">大好き💕</span>
         </p>
       </article>
 
