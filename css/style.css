@@ -1254,7 +1254,8 @@ h3.text {
 }
 
 /* 文の途中で1〜2文字だけ次の行に落ちないよう、区切りのまとまりごとに改行させる */
-.newsText .phrase {
+.newsText .phrase,
+.newsItemTitle .phrase {
   display: inline-block;
 }
 

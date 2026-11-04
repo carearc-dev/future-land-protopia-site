@@ -342,12 +342,14 @@ EOT;
       <div class="slider-row">
         <div class="slider-track">
           <div class="slider-group">
-            <div class="box box-photo"><img src="img/activity-01.webp" alt="花畑で花束を持つエリオット・フラッティ・キャメロン" width="448" height="560" decoding="async"></div>
+            <div class="box box-photo"><img src="img/activity-01.webp?v=20261103" alt="花畑で花束を持つエリオット・フラッティ・キャメロン" width="448" height="560" decoding="async"></div>
             <div class="box box-soon box-a"><p>coming soon</p></div>
-            <div class="box box-photo"><img src="img/activity-02.webp" alt="ひまわり畑でひまわりの花束を持つエリオット" width="448" height="560" decoding="async"></div>
+            <div class="box box-photo"><img src="img/activity-02.webp?v=20261103" alt="ひまわり畑でひまわりの花束を持つエリオット" width="448" height="560" decoding="async"></div>
             <div class="box box-soon box-b"><p>coming soon</p></div>
-            <div class="box box-photo"><img src="img/activity-03.webp" alt="花畑でバラの花束を持つフラッティと、花束を持つキャメロン" width="448" height="560" decoding="async"></div>
+            <div class="box box-photo"><img src="img/activity-04.webp" alt="花に囲まれたラウンジでケーキを囲み、ティータイムを楽しむエリオット・フラッティ・キャメロン" width="448" height="560" decoding="async"></div>
             <div class="box box-soon box-a"><p>coming soon</p></div>
+            <div class="box box-photo"><img src="img/activity-03.webp" alt="花畑でバラの花束を持つフラッティと、花束を持つキャメロン" width="448" height="560" decoding="async"></div>
+            <div class="box box-soon box-b"><p>coming soon</p></div>
           </div>
         </div>
       </div>
@@ -508,6 +510,25 @@ EOT;
 
       <!-- 繰り返し（新しい記事を上に追加する。画像は縦長4:5、img/ に 720×900 の WebP で置く） -->
       <article class="newsItem">
+        <div class="newsImg"><img src="img/news-20261104.webp" alt="花に囲まれたラウンジでケーキを囲み、ティータイムを楽しむエリオット・フラッティ・キャメロン" width="720" height="900" loading="lazy" decoding="async"></div>
+        <time class="newsDate" datetime="2026-11-04">2026.11.04</time>
+        <h3 class="newsItemTitle"><span class="phrase">【お花の手入れのあとの</span><span class="phrase">素敵なラウンジで、</span><span class="phrase">みんなと共に</span><span class="phrase">幸せなティータイム🌹】</span></h3>
+
+        <p class="newsText">
+          <strong>フラッティ</strong><br>
+          <span class="phrase">薔薇のハーブティは</span><span class="phrase">優雅な香りでしょ？</span><br>
+          <span class="phrase">ゆっくり味わうと、</span><span class="phrase">心がとっても落ち着くね！</span><br>
+          <br>
+          <strong>エリオット</strong><br>
+          <span class="phrase">わぁ！</span> <span class="phrase">このハーブティ飲んだら、</span><span class="phrase">心までぽかぽかしてきたよ🎶</span><br>
+          <br>
+          <strong>キャメロン</strong><br>
+          <span class="phrase">うふふ…...</span><span class="phrase">ガーベラみたいな可愛いカップで飲むと、</span><span class="phrase">もっと美味しく感じるね！</span><br>
+          <span class="phrase">みんなと過ごすティータイム、</span><span class="phrase">大好き💕</span>
+        </p>
+      </article>
+
+      <article class="newsItem">
         <div class="newsImg"><img src="img/news-20261023.webp" alt="ハロウィンの仮装をしたエリオット・フラッティ・キャメロンと「Happy Halloween to each other.」の文字" width="720" height="900" loading="lazy" decoding="async"></div>
         <time class="newsDate" datetime="2026-10-23">2026.10.23</time>
         <h3 class="newsItemTitle">「FUTURE LAND PROTOPIA」</h3>
@@ -523,7 +544,7 @@ EOT;
       </article>
 
       <article class="newsItem">
-        <div class="newsImg"><img src="img/news-20261021.webp" alt="花畑で花束を持つエリオット・フラッティ・キャメロン" width="720" height="900" loading="lazy" decoding="async"></div>
+        <div class="newsImg"><img src="img/news-20261021.webp?v=20261103" alt="花畑で花束を持つエリオット・フラッティ・キャメロン" width="720" height="900" loading="lazy" decoding="async"></div>
         <time class="newsDate" datetime="2026-10-21">2026.10.21</time>
         <h3 class="newsItemTitle">「FUTURE LAND PROTOPIA」</h3>
 
