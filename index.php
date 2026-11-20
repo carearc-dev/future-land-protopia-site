@@ -346,7 +346,7 @@ EOT;
             <div class="box box-soon box-a"><p>coming soon</p></div>
             <div class="box box-photo"><img src="img/activity-02.webp?v=20261103" alt="ひまわり畑でひまわりの花束を持つエリオット" width="448" height="560" decoding="async"></div>
             <div class="box box-soon box-b"><p>coming soon</p></div>
-            <div class="box box-photo"><img src="img/activity-04.webp" alt="花に囲まれたラウンジでケーキを囲み、ティータイムを楽しむエリオット・フラッティ・キャメロン" width="448" height="560" decoding="async"></div>
+            <div class="box box-photo"><img src="img/activity-05.webp" alt="花の咲く森の木の枝にとまる、チェックの帽子とジャケット姿のフクロウ、アイン ホー博士（Dr Ain-Hoo）" width="448" height="560" decoding="async"></div>
             <div class="box box-soon box-a"><p>coming soon</p></div>
             <div class="box box-photo"><img src="img/activity-03.webp" alt="花畑でバラの花束を持つフラッティと、花束を持つキャメロン" width="448" height="560" decoding="async"></div>
             <div class="box box-soon box-b"><p>coming soon</p></div>
