@@ -231,7 +231,7 @@ EOT;
 
       <article class="character-card">
         <div class="character-image">
-          <img src="img/character03.webp" alt="キャメロン" class="item js-fadeup-1">
+          <img src="img/character03-v2.webp" alt="キャメロン" class="item js-fadeup-1">
         </div>
         <p class="character-name">Cameron（キャメロン）</p>
         <p class="character-copy">ちょっぴりおてんばで、<br>
